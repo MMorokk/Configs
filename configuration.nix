@@ -104,7 +104,12 @@
     vim
     librewolf
     mate.caja-with-extensions
-    discord
+    (pkgs.discord.override {
+      # remove any overrides that you don't want
+      withOpenASAR = false;
+      withVencord = true;
+    })
+
     neofetch
     nmap
     xclip
@@ -123,7 +128,8 @@
     glava
     xcolor 
     dunst
-
+    xorg.xev
+    imagemagick
   ];
   
   hardware.mwProCapture.enable = true; 
@@ -227,5 +233,24 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
+
+
+
+
+
+  #Other configs
+  
+  home.sessionUser = {
+  extraFiles = {
+    ".config/test.conf".text = "Setting=value\nAnotherSetting=anotherValue";
+    };
+  };
+
+
+
+
+
+
+
 
 }
